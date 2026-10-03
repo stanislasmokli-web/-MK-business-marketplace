@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>MK_Business Marketplace</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f6f6f6;
+      color: #111;
+    }
+
+    header {
+      background: #111;
+      color: white;
+      padding: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .logo span {
+      font-weight: normal;
+    }
+
+    .cart {
+      background: white;
+      color: #111;
+      border: none;
+      padding: 10px 14px;
+      border-radius: 10px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #111, #333);
+      color: white;
+      padding: 45px 20px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 38px;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      color: #ddd;
+      margin-bottom: 25px;
+      line-height: 1.6;
+    }
+
+    .btn {
+      display: inline-block;
+      background: white;
+      color: #111;
+      padding: 13px 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .search {
+      padding: 20px;
+      background: white;
+    }
+
+    .search input {
+      width: 100%;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      font-size: 15px;
+    }
+
+    section {
+      padding: 25px 18px;
+    }
+
+    h2 {
+      margin-bottom: 18px;
+    }
+
+    .categories {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+    }
+
+    .category {
+      min-width: 100px;
+      background: white;
+      padding: 18px 10px;
+      border-radius: 14px;
+      text-align: center;
+      border: 1px solid #eee;
+    }
+
+    .category div {
+      font-size: 28px;
+      margin-bottom: 7px;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .product {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      border: 1px solid #eee;
+    }
+
+    .product-image {
+      height: 150px;
+      background: #e9e9e9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 65px;
+    }
+
+    .product-info {
+      padding: 13px;
+    }
+
+    .product-info h3 {
+      font-size: 15px;
+      margin-bottom: 8px;
+    }
+
+    .price {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .buy {
+      width: 100%;
+      border: none;
+      background: #111;
+      color: white;
+      padding: 10px;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    .seller {
+      background: #111;
+      color: white;
+      margin: 20px 18px;
+      padding: 25px;
+      border-radius: 20px;
+    }
+
+    .seller h2 {
+      margin-bottom: 10px;
+    }
+
+    .seller p {
+      color: #ddd;
+      line-height: 1.5;
+      margin-bottom: 18px;
+    }
+
+    footer {
+      background: #111;
+      color: #aaa;
+      text-align: center;
+      padding: 30px 15px;
+      margin-top: 30px;
+    }
+
+    footer strong {
+      color: white;
+    }
+
+    @media (min-width: 700px) {
+      .products {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .hero h1 {
+        font-size: 55px;
+      }
+
+      section,
+      .search {
+        max-width: 1200px;
+        margin: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">
+      MK_<span>Business</span>
+    </div>
+
+    <button class="cart">
+      🛒 Panier (<span id="cart">0</span>)
+    </button>
+  </header>
+
+  <div class="hero">
+    <h1>Tout ce que tu cherches, au même endroit.</h1>
+
+    <p>
+      Découvre des produits, des boutiques et des offres
+      sur MK_Business Marketplace.
+    </p>
+
+    <a href="#produits" class="btn">
+      Explorer les produits
+    </a>
+  </div>
+
+  <div class="search">
+    <input
+      type="text"
+      id="search"
+      placeholder="🔎 Rechercher un produit..."
+      onkeyup="searchProducts()"
+    >
+  </div>
+
+  <section>
+    <h2>Catégories</h2>
+
+    <div class="categories">
+
+      <div class="category">
+        <div>👕</div>
+        Mode
+      </div>
+
+      <div class="category">
+        <div>👟</div>
+        Chaussures
+      </div>
+
+      <div class="category">
+        <div>📱</div>
+        Téléphones
+      </div>
+
+      <div class="category">
+        <div>💄</div>
+        Beauté
+      </div>
+
+      <div class="category">
+        <div>🏠</div>
+        Maison
+      </div>
+
+      <div class="category">
+        <div>🎁</div>
+        Cadeaux
+      </div>
+
+    </div>
+  </section>
+
+  <section id="produits">
+
+    <h2>🔥 Produits du moment</h2>
+
+    <div class="products" id="products">
+
+      <div class="product">
+        <div class="product-image">👕</div>
+
+        <div class="product-info">
+          <h3>Pull Premium</h3>
+
+          <div class="price">
+            2 500 F CFA
+          </div>
+
+          <button class="buy" onclick="addCart()">
+            Ajouter au panier
+          </button>
+        </div>
+      </div>
+
+      <div class="product">
+        <div class="product-image">👖</div>
+
+        <div class="product-info">
+          <h3>Jean personnalisé</h3>
+
+          <div class="price">
+            3 500 F CFA
+          </div>
+
+          <button class="buy" onclick="addCart()">
+            Ajouter au panier
+          </button>
+        </div>
+      </div>
+
+      <div class="product">
+        <div class="product-image">👟</div>
+
+        <div class="product-info">
+          <h3>Sneakers Urban</h3>
+
+          <div class="price">
+            12 000 F CFA
+          </div>
+
+          <button class="buy" onclick="addCart()">
+            Ajouter au panier
+          </button>
+        </div>
+      </div>
+
+      <div class="product">
+        <div class="product-image">🎧</div>
+
+        <div class="product-info">
+          <h3>Écouteurs Bluetooth</h3>
+
+          <div class="price">
+            6 500 F CFA
+          </div>
+
+          <button class="buy" onclick="addCart()">
+            Ajouter au panier
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <div class="seller">
+
+    <h2>🏪 Tu es vendeur ?</h2>
+
+    <p>
+      Crée ta boutique sur MK_Business, ajoute tes produits
+      et commence à vendre en ligne.
+    </p>
+
+    <a href="#" class="btn">
+      Devenir vendeur
+    </a>
+
+  </div>
+
+  <footer>
+
+    <strong>MK_Business</strong>
+
+    <p>
+      Ta mode. Ton style. Ton marketplace.
+    </p>
+
+    <p>
+      © 2026 MK_Business
+    </p>
+
+  </footer>
+
+  <script>
+
+    let cart = 0;
+
+    function addCart() {
+
+      cart++;
+
+      document.getElementById("cart").textContent = cart;
+
+      alert("Produit ajouté au panier 🛒");
+
+    }
+
+    function searchProducts() {
+
+      let input =
+        document.getElementById("search")
+        .value
+        .toLowerCase();
+
+      let products =
+        document.querySelectorAll(".product");
+
+      products.forEach(function(product) {
+
+        let name =
+          product
+          .querySelector("h3")
+          .textContent
+          .toLowerCase();
+
+        if (name.includes(input)) {
+
+          product.style.display = "";
+
+        } else {
+
+          product.style.display = "none";
+
+        }
+
+      });
+
+    }
+
+  </script>
+
+</body>
+</html>
