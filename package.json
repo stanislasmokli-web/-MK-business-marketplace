@@ -1,17 +1,8 @@
 {
-  "name": "mk-business-marketplace",
-  "version": "1.0.0",
+  "name": "mk-business",
+  "version": "2.0.0",
   "private": true,
   "type": "module",
-  "scripts": {
-    "db:generate": "drizzle-kit generate"
-  },
-  "dependencies": {
-    "@netlify/database": "^2.0.1",
-    "@netlify/functions": "^6.0.2",
-    "drizzle-orm": "^1.0.0-beta.22"
-  },
-  "devDependencies": {
-    "drizzle-kit": "^1.0.0-beta.22"
-  }
+  "engines": { "node": ">=20" },
+  "dependencies": { "@netlify/blobs": "^8.1.0" }
 }

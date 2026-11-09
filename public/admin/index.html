@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Administration — MK_Business</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/admin/admin.css">
+</head>
+<body class="adm">
+<div id="login" hidden>
+  <form id="lf" class="login-box f" novalidate>
+    <h1>MK<span>_</span>Business</h1>
+    <p class="muted">Espace privé du vendeur</p>
+    <div id="lerr" class="err" role="alert" hidden></div>
+    <label>Mot de passe<input id="pw" type="password" autocomplete="current-password" required></label>
+    <button class="btn btn-yellow" type="submit">Se connecter</button>
+  </form>
+</div>
+
+<div id="app" hidden>
+  <header class="top"><div class="top-in"><b class="logo">MK<span>_</span>Admin</b>
+    <div class="top-actions"><a class="link" style="color:#fff" href="/" target="_blank" rel="noopener">Voir la boutique</a>
+    <button class="cart-btn" type="button" data-a="logout">Se déconnecter</button></div></div></header>
+  <main class="wrap adm-main">
+    <div class="stats" id="stats"></div>
+    <div class="tabs" role="tablist">
+      <button type="button" role="tab" id="tab-orders" data-a="tab" data-t="orders" aria-selected="true">Commandes</button>
+      <button type="button" role="tab" id="tab-products" data-a="tab" data-t="products" aria-selected="false">Produits</button>
+    </div>
+    <section id="orders-pane"></section>
+    <section id="products-pane" hidden></section>
+  </main>
+</div>
+
+<dialog id="pform" aria-labelledby="pf-title"></dialog>
+<div id="toast" role="status" aria-live="polite"></div>
+<script src="/admin/admin.js" defer></script>
+</body>
+</html>

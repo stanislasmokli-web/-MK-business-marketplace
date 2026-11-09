@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>MK_Business — Jeans peints à la main</title>
+<meta name="description" content="Jeans peints à la main, une pièce à la fois. Commande en ligne, paiement Flooz, T-Money ou à la livraison.">
+<meta name="theme-color" content="#0E1116">
+<meta property="og:title" content="MK_Business — Ta mode. Ton style.">
+<meta property="og:description" content="Jeans peints à la main. Commande en ligne, paiement Flooz, T-Money ou à la livraison.">
+<meta property="og:image" content="/images/hero-flyer.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="top-in">
+    <a class="logo" href="/" aria-label="MK_Business, accueil">MK<span>_</span>Business</a>
+    <button class="cart-btn" type="button" data-act="open-cart" aria-label="Ouvrir le panier">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M3 4h2.5l2 11h10.5l2-8H7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="19.5" r="1.5" fill="currentColor"/><circle cx="17" cy="19.5" r="1.5" fill="currentColor"/></svg>
+      <span>Panier</span><b id="cart-count" hidden>0</b>
+    </button>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-in">
+      <div class="hero-text">
+        <h1>Ta mode.<br>Ton style.</h1>
+        <p>Des jeans peints à la main, une pièce à la fois. Commande ici, paie avec Flooz, T-Money ou à la livraison.</p>
+        <div class="hero-cta">
+          <a class="btn btn-dark" href="#catalogue">Voir les jeans</a>
+          <a class="btn btn-line" id="wa-hero" href="#" target="_blank" rel="noopener">Écrire sur WhatsApp</a>
+        </div>
+      </div>
+      <img class="hero-photo" src="/images/hero-flyer.jpg" alt="Jeans MK_Business peints à la main, portés par un client" width="978" height="1467" fetchpriority="high">
+    </div>
+  </section>
+
+  <section id="catalogue" class="wrap">
+    <div class="tools">
+      <label class="search"><span class="sr">Rechercher un jean</span>
+        <input id="q" type="search" placeholder="Rechercher : smiley, no fake zone…" autocomplete="off">
+      </label>
+      <label class="sort"><span class="sr">Trier</span>
+        <select id="sort">
+          <option value="new">Nouveautés</option>
+          <option value="asc">Prix croissant</option>
+          <option value="desc">Prix décroissant</option>
+        </select>
+      </label>
+    </div>
+    <div id="chips" class="chips" role="group" aria-label="Catégories" hidden></div>
+    <div id="grid" class="grid" aria-live="polite"><p class="empty">Chargement des jeans…</p></div>
+  </section>
+
+  <section class="how wrap">
+    <h2>Commander en 3 étapes</h2>
+    <ol>
+      <li><b>Choisis</b><span>Ajoute tes jeans au panier.</span></li>
+      <li><b>Paie</b><span>Flooz, T-Money, ou en espèces à la livraison.</span></li>
+      <li><b>Reçois</b><span>On te confirme la livraison sur WhatsApp.</span></li>
+    </ol>
+  </section>
+
+  <section class="custom">
+    <div class="wrap custom-in">
+      <img src="/images/catalogue-flyer.jpg" alt="Affiche MK_Business : des jeans uniques qui reflètent ta personnalité" loading="lazy" width="978" height="1467">
+      <div>
+        <h2>Un dessin en tête ?</h2>
+        <p>Envoie-nous ton idée sur WhatsApp. On te répond avec ce qu’on peut peindre pour toi.</p>
+        <a class="btn btn-dark" id="wa-custom" href="#" target="_blank" rel="noopener">Parler à MK_Business</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <b>MK_Business</b>
+    <nav aria-label="Informations légales">
+      <a href="/legal/conditions-generales-de-vente.html">Conditions de vente</a>
+      <a href="/legal/retours-remboursements.html">Retours et remboursements</a>
+      <a href="/legal/politique-de-confidentialite.html">Confidentialité</a>
+    </nav>
+  </div>
+</footer>
+
+<dialog id="sheet" aria-labelledby="sheet-title"></dialog>
+<div id="toast" role="status" aria-live="polite"></div>
+<script src="/js/shop.js" defer></script>
+</body>
+</html>
