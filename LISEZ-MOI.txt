@@ -1,0 +1,41 @@
+MK_BUSINESS — boutique en ligne (version reconstruite)
+=======================================================
+
+CE QUE FAIT LE SITE
+- Boutique : catalogue, recherche, tri, fiche produit, panier, commande.
+- Paiement : Flooz, T-Money (via PayGate) ou espèces à la livraison.
+- Admin privé (/admin/) : commandes, produits, stock, photos depuis le téléphone.
+- Les prix et le total sont recalculés par le serveur. Une commande n'est
+  "payée" que si PayGate le confirme au serveur.
+
+MISE EN LIGNE (10 minutes)
+1. Mets ce dossier sur GitHub, puis dans Netlify : Add new site > Import an
+   existing project. Réglages automatiques (lus dans netlify.toml).
+   (Alternative : installe Netlify CLI, puis "netlify deploy --prod".)
+2. Netlify > Site configuration > Environment variables, ajoute :
+     MK_ADMIN_PASSWORD  = ton mot de passe admin
+     MK_ADMIN_SECRET    = une longue phrase au hasard (16 caractères minimum)
+     PAYGATE_AUTH_TOKEN = ta clé PayGate (sans elle, le paiement en ligne est
+                          désactivé et seuls "paiement à la livraison" et
+                          WhatsApp marchent)
+     MK_WHATSAPP        = (facultatif) numéro WhatsApp, ex. 22870537502
+3. Redéploie (Deploys > Trigger deploy).
+4. Dans ton compte PayGate, indique comme URL de retour (callback) :
+     https://TON-SITE.netlify.app/api/paygate-callback
+   (Le site vérifie aussi tout seul le paiement ; le callback est un renfort.)
+5. Ouvre https://TON-SITE.netlify.app/admin/ et connecte-toi.
+
+PREMIER TEST
+- Fais une commande "paiement à la livraison", vérifie-la dans l'admin.
+- Puis une vraie commande Flooz ou T-Money de petit montant.
+  (Astuce : mets un jean à 100 F CFA dans l'admin pour tester, puis remets le prix.)
+
+À SAVOIR
+- Les 8 jeans sont pré-chargés (3 500 F CFA, stock 10). 4 n'ont pas encore de
+  photo : ajoute-les dans Admin > Produits > Modifier.
+- "Jean KODAK BLACK" (photo fournie) est masqué : active-le dans l'admin si tu
+  le vends.
+- Frais de livraison : modifie "deliveryFees" dans netlify/functions/_lib.mjs,
+  ex. { 'Lomé': 1000, 'Kara': 3000 }.
+- Pages légales (/legal/) : modèles à relire et compléter.
+- Ne mets JAMAIS de clé ou de mot de passe dans les fichiers du site.
